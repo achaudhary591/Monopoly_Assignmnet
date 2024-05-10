@@ -1,0 +1,25 @@
+# Design and Architectural Decisions
+
+## Technology Stack
+- Spring Boot: Simplifies backend development and provides embedded Tomcat.
+- Spring Data JPA: For database interactions and easier data management.
+- H2 Database: In-memory database for quick setup and teardown in a development environment.
+
+## Design Patterns
+1. **Singleton**: Ensured that the GameController and GameService are managed as singletons by Spring Framework, which is standard for Spring Beans.
+2. **Repository Pattern**: Used for data access layers to separate business logic from data access logic.
+3. **Service Pattern**: Encapsulates the business logic of the application, providing a clear separation from the controller's request handling.
+4. **Model-View-Controller (MVC)**: Used MVC pattern where GameController acts as the controller, GameService as the model (business logic), and JSON responses as the view.
+
+## Architectural Decisions
+- RESTful API Design: Chose REST principles for API design to ensure stateless communication and standard operation using HTTP verbs.
+- Transaction Management: Applied @Transactional annotations to ensure data consistency and handle transactions smoothly at the service layer.
+- Exception Handling: Global exception handling with @ControllerAdvice to manage exceptions and return proper HTTP responses.
+
+## Scalability Considerations
+- While the current requirement is for a single game at a time, the design allows for easy scaling to multiple games by adjusting the database schema and service logic to handle multiple game sessions.
+
+## Security Decisions
+- Added basic authentication to ensure that only authenticated users can create, manage, and delete games. (Assuming implementation of Spring Security for this setup.)
+
+These decisions were made to ensure that the application is robust, maintainable, and scalable.

@@ -1,0 +1,29 @@
+# Usage Guide for Monopoly Game API
+
+## Features Implemented
+1. Ability for a host to create a new game, discarding the old one.
+2. Ability for the host to play the game with another player.
+3. Each player starts with $1000.
+4. Players roll two dice to move around the board.
+5. Automatic purchase of properties when landed on.
+6. Automatic rent payments to property owners when landed on their properties.
+
+## How to Start a Game
+- Endpoint: POST /games/start
+- Payload: { "players": ["Alice", "Bob"] }
+- Returns: Details of the game including player details and initial positions.
+
+## How to Roll Dice
+- Endpoint: POST /games/{gameId}/roll
+- Path Variable: gameId (ID of the current game)
+- Returns: Result of the dice roll, updated player position, and any transactions.
+
+## How to End a Game
+- Endpoint: DELETE /games/{gameId}
+- Path Variable: gameId (ID of the current game)
+- Action: Deletes the game and frees up resources.
+
+## Error Handling
+- The game API returns appropriate HTTP status codes for different situations (e.g., 404 for game not found, 400 for bad requests).
+
+Note: Replace `{gameId}` with the actual game ID you receive from the start game response.
